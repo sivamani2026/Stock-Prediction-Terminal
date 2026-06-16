@@ -302,17 +302,18 @@ else:
     <h3 style="margin-top: 0; text-align: center; font-size: 18px; color: #F3F4F6;">🆕 Create Account</h3>
     <p style="text-align: center; font-size: 12px; color: #9CA3AF; margin-bottom: 20px;">
     Register new credentials to gain access.
-    </p>
-    """, unsafe_allow_html=True)
-
-    new_user = st.text_input("Choose Username", key="reg_username").strip()
-    new_pass = st.text_input("Choose Password", type="password", key="reg_password")
-    confirm_pass = st.text_input("Confirm Password", type="password", key="reg_confirm")
-                elif len(new_pass) < 4:
-                    st.error("Password must be at least 4 characters long.")
-                elif new_pass != confirm_pass:
-                    st.error("Passwords do not match.")
-                elif new_user in st.session_state.registered_users:
+    if st.button("✨ Sign Up / Register"):
+    if not new_user:
+        st.error("Username cannot be empty.")
+   elif len(new_pass) < 4:
+        st.error("Password must be at least 4 characters long.")
+    elif new_pass != confirm_pass:
+        st.error("Passwords do not match.")
+    elif new_user in st.session_state.registered_users:
+        st.error("Username already exists.")
+    else:
+        st.session_state.registered_users[new_user] = new_pass
+        st.success("Account created successfully!")
                     st.error("Username already exists. Please choose another one.")
                 else:
                     st.session_state.registered_users[new_user] = new_pass
