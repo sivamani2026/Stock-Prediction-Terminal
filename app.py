@@ -183,7 +183,7 @@ else:
     st.markdown(CSS_LIGHT, unsafe_allow_html=True)
 
 # Login Page Flow
-if not st.session_state.logged_in:
+if not st.session_state.get("logged_in", False):
     # Base64 encode the trader command center background image
     image_path = "/Users/sivamani/.gemini/antigravity-ide/brain/046636ea-fcfe-42f4-b265-57ab13dceb39/trader_command_center_1781632946934.png"
     base64_str = ""
