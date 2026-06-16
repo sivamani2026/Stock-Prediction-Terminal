@@ -342,27 +342,14 @@ if theme == "Dark":
     st.markdown(f"""
 <style>
     .stApp {{
-        background: linear-gradient(rgba(11, 15, 25, 0.72), rgba(11, 15, 25, 0.82)), url("data:image/png;base64,{dash_base64}") !important;
-        background-size: cover !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        background-attachment: fixed !important;
-    }}
-    .main {{
-        background: transparent !important;
-    }}
-    /* Make metric cards glassmorphic */
-    .metric-card {{
-        background: rgba(13, 27, 42, 0.45) !important;
-        backdrop-filter: blur(8px) !important;
-        -webkit-backdrop-filter: blur(8px) !important;
-        border: 1px solid rgba(0, 240, 254, 0.18) !important;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
-    }}
+    st.markdown("""
+<style>
+.some-class {
+    backdrop-filter: blur(8px) !important;
+    background: rgba(0,0,0,0.5);
+}
 </style>
 """, unsafe_allow_html=True)
-
-# Sidebar Account details and logout option
 st.sidebar.markdown("---")
 st.sidebar.markdown("""
 <div style="background: rgba(13, 27, 42, 0.4); border: 1px solid rgba(0, 240, 254, 0.15); border-radius: 10px; padding: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0, 240, 254, 0.05);">
