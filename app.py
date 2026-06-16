@@ -9,25 +9,19 @@ import base64
 from data_loader import fetch_stock_data
 from preprocessor import add_technical_indicators, prepare_ml_data, prepare_lstm_data
 from models import train_linear_regression, train_random_forest, train_lstm_model, HAS_TENSORFLOW
-from evaluator import compute_metrics, compute_directional_accuracy, compare_models
 from visualizer import (
     plot_stock_history_candlestick,
     plot_actual_vs_predicted_interactive,
     plot_metrics_comparison_bar
 )
+
+# Page Configuration
+st.set_page_config(
+    page_title="Stock Prediction Dashboard",
+    page_icon="📈",
     layout="wide",
     initial_sidebar_state="expanded"
 )
-
-# Initialize session state
-if 'logged_in' not in st.session_state:
-    st.session_state.logged_in = False
-if 'registered_users' not in st.session_state:
-    st.session_state.registered_users = {'admin': 'admin'}
-if 'auth_mode' not in st.session_state:
-    st.session_state.auth_mode = 'login'
-
-# Sidebar theme control (always visible so user can change theme anytime)
 st.sidebar.markdown("### 🎨 Visual Theme")
 theme = st.sidebar.selectbox("App Theme", ["Dark", "Light"], index=0)
 
