@@ -213,6 +213,11 @@ if not st.session_state.get("logged_in", False):
     footer {{visibility: hidden !important;}}
     #MainMenu {{visibility: hidden !important;}}
     .stApp {{
+    background: ...
+}}
+.main {{
+    background: transparent !important;
+}}
         background: linear-gradient(rgba(11, 15, 25, 0.3), rgba(11, 15, 25, 0.45)), url("data:image/png;base64,{base64_str}") !important;
         background-size: cover !important;
         background-position: center !important;
