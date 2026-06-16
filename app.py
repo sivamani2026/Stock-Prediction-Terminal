@@ -297,32 +297,15 @@ if not st.session_state.get("logged_in", False):
 <h3 style="margin-top: 0; text-align: center; font-size: 18px; color: #F3F4F6;">🔐 Member Log In</h3>
 <p style="text-align: center; font-size: 12px; color: #9CA3AF; margin-bottom: 20px;">Authenticate to view forecasting models.</p>
 """, unsafe_allow_html=True)
-            
-            username = st.text_input("Username", key="login_username")
-            password = st.text_input("Password", type="password", key="login_password")
-            
-            st.markdown("<div style='text-align: center; font-size: 12px; margin-top: 5px; color: #9CA3AF;'>Hint: Use <b>admin</b> / <b>admin</b></div>", unsafe_allow_html=True)
-            
-            st.write("")
-            if st.button("🔓 Log In", use_container_width=True):
-                if username in st.session_state.registered_users and st.session_state.registered_users[username] == password:
-                    st.session_state.logged_in = True
-                    st.session_state.current_user = username
-                    st.success("Access granted! Loading...")
-                    st.rerun()
-                else:
-                    st.error("Invalid username or password.")
-                    
-            if st.button("🆕 Create an Account (Sign Up)", use_container_width=True):
-                st.session_state.auth_mode = 'register'
-                st.rerun()
-                
-        else:
-            st.markdown("""
-<div style="text-align: center; margin-bottom: 20px;">
-<h2 style="color: #00F0FE; margin:0; font-size: 24px; font-weight: 800; text-shadow: 0 0 10px rgba(0, 240, 254, 0.4);">🔮 Stock Prediction Terminal</h2>
-<p style="color: #9CA3AF; font-size: 11px; margin-top: 5px; letter-spacing: 1px;">HEDGE FUND AI INTEL PLATFORM</p>
-</div>
+if st.session_state.get("auth_mode", "login") == "login":
+    st.subheader("Login")
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+
+else:
+    st.subheader("Create Account")
+    new_user = st.text_input("New Username")
+    new_pass = st.text_input("New Password", type="password")
 <h3 style="margin-top: 0; text-align: center; font-size: 18px; color: #F3F4F6;">🆕 Create Account</h3>
 <p style="text-align: center; font-size: 12px; color: #9CA3AF; margin-bottom: 20px;">Register new credentials to gain access.</p>
 """, unsafe_allow_html=True)
