@@ -6,11 +6,15 @@ from datetime import datetime, timedelta
 import plotly.express as px
 import base64
 
-from src.data_loader import fetch_stock_data
-from src.preprocessor import add_technical_indicators, prepare_ml_data, prepare_lstm_data
-from src.models import train_linear_regression, train_random_forest, train_lstm_model, HAS_TENSORFLOW
-from src.evaluator import compute_metrics, compute_directional_accuracy, compare_models
-from src.visualizer import (
+from data_loader import fetch_stock_data
+from preprocessor import add_technical_indicators, prepare_ml_data, prepare_lstm_data
+from models import train_linear_regression, train_random_forest, train_lstm_model, HAS_TENSORFLOW
+from evaluator import compute_metrics, compute_directional_accuracy, compare_models
+from visualizer import (
+    plot_stock_history_candlestick,
+    plot_actual_vs_predicted_interactive,
+    plot_metrics_comparison_bar
+) (
     plot_stock_history_candlestick, 
     plot_actual_vs_predicted_interactive, 
     plot_metrics_comparison_bar
