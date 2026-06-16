@@ -22,6 +22,18 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+# Session State Initialization
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
+
+if "auth_mode" not in st.session_state:
+    st.session_state.auth_mode = "login"
+
+if "registered_users" not in st.session_state:
+    st.session_state.registered_users = {"admin": "admin"}
+
+if "current_user" not in st.session_state:
+    st.session_state.current_user = "admin"
 st.sidebar.markdown("### 🎨 Visual Theme")
 theme = st.sidebar.selectbox("App Theme", ["Dark", "Light"], index=0)
 
@@ -276,7 +288,7 @@ if not st.session_state.get("logged_in", False):
 """, unsafe_allow_html=True)
         
     with col_right:
-        if st.session_state.auth_mode == 'login':
+       if st.session_state.get("auth_mode", "login") == "login":
             st.markdown("""
 <div style="text-align: center; margin-bottom: 20px;">
 <h2 style="color: #00F0FE; margin:0; font-size: 24px; font-weight: 800; text-shadow: 0 0 10px rgba(0, 240, 254, 0.4);">🔮 Stock Prediction Terminal</h2>
