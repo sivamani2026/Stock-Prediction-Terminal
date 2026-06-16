@@ -13,13 +13,12 @@ from evaluator import compute_metrics, compute_directional_accuracy, compare_mod
 from visualizer import (
     plot_stock_history_candlestick,
     plot_actual_vs_predicted_interactive,
-    plot_metrics_comparison_bar
-) (
-    plot_stock_history_candlestick, 
-    plot_actual_vs_predicted_interactive, 
+    plot_metrics_comparison_bar) 
+(
+    plot_stock_history_candlestick,
+    plot_actual_vs_predicted_interactive,
     plot_metrics_comparison_bar
 )
-
 # Page Configuration
 st.set_page_config(
     page_title="Stock Prediction Dashboard",
